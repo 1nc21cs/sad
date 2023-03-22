@@ -1,0 +1,76 @@
+package jk;
+public class Sample 
+{
+synchronized void print(int n)
+{ 
+ for(int i=1;i<=5;i++)
+ { 
+ System.out.println(n+i); 
+ try{ Thread.sleep(500); }
+ catch(Exception e){ System.out.println(e); } 
+ } 
+} 
+}
+public class Thread1 extends Thread
+{
+ Sample s;
+ Thread1(Sample s)
+ {
+ this.s=s;
+ }
+ public void run()
+ {
+ s.print(10);
+ }
+}
+public class Thread2 extends Thread
+{
+ Sample s;
+ Thread2(Sample s)
+ {
+ this.s=s;
+ }
+ public void run()
+ {
+ s.print(50);
+ }
+}
+public class Test 
+{
+public static void main(String[] args) 
+{
+ Sample obj=new Sample();
+ Thread1 t1=new Thread1(obj);
+ Thread2 t2=new Thread2(obj);
+ t1.start();
+ t2.start();
+}
+}
+/*
+Without Thread Synchronization (Random output with both threads – we will get 
+different outputs with different runs)
+Run1 Run2 Run3
+11
+51
+52
+12
+53
+13
+54
+14
+55
+15
+
+With Thread Synchronization (Always gets same output that is Thread1 followed by 
+Thread2)
+11
+12
+13
+14
+15
+51
+52
+53
+54
+55
+*/

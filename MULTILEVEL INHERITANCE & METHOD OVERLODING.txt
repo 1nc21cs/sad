@@ -1,0 +1,54 @@
+class Book
+{
+int price=100;
+int pages=350;
+public void show()
+{
+System.out.println("\t Books information");
+System.out.println("\t Books price:"+price);
+System.out.println("\t Books pages:"+pages);
+}
+}
+class Hardwarebook extends Book
+{
+String Hardwaretitle="printers";
+String publisher="wilkins";
+public void show()
+{
+System.out.println("\t Hardwarebooks information");
+System.out.println("\t Hardwaretitle:"+Hardwaretitle);
+System.out.println("\t publisher name:"+publisher);
+}
+}
+class Softwarebook extends Hardwarebook
+{
+String Softwarename="windows";
+String Softwareversion="2.0";
+public void show()
+{
+System.out.println("\t Softwarebooks information");
+System.out.println("\t Softwarebooks name:"+Softwarename);
+System.out.println("\t Softwarebook version:"+Softwareversion);
+}
+public static void main(String args[])
+{
+Book b=new Book();
+Hardwarebook h=new Hardwarebook();
+Softwarebook s=new Softwarebook();
+b.show();
+h.show();
+s.show();
+}
+}
+/*
+output:
+Books information
+Books price:100
+Books pages:350
+	 Hardwarebooks information
+Hardwaretitle:printers
+	 publisher name:wilkins
+	 Softwarebooks information
+	 Softwarebooks name:windows
+	 Softwarebook version:2.0
+*/

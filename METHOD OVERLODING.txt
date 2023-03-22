@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class Calculator
+{
+public void Demo(int a,int b)
+{
+System.out.print(a+b+"\n");
+}
+public void Demo(double a,double b,double c)
+{
+System.out.print(a*b*c+"\n");
+}
+public void Demo(int a,double b)
+{
+System.out.print(a/b+"\n");
+}
+public static void main( String args[ ] )
+ {
+ Calculator obj = new Calculator();
+
+      obj.Demo(5,10); 
+      obj.Demo(20.5,14.6,25.5);
+      obj.Demo(20,10.6);
+ }
+}
+/*
+15
+7632.150000000001
+1.8867924528301887
+*/
