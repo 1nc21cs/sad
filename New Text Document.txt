@@ -1,0 +1,100 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct queue
+{
+	int info;
+	struct queue *next;
+};
+typedef struct queue node;
+node *start;
+
+node *getnode_queue()
+{
+	node *p;
+	p=(node*)malloc(sizeof(node));
+	printf("Enter the data:");
+	scanf("%d",&p->info);
+	p->next=NULL;
+	return p;
+}
+
+void insert_queueFront()
+{
+	node *new1;
+	new1=getnode_queue();
+	if(start==NULL)
+	{
+		start=new1;
+		return;
+	}
+	new1->next=start;
+	start=new1;
+}
+
+void delete_queueEnd()
+{
+	node *temp=start,*prev;
+	if(start==NULL)
+	{
+		printf("List is empty\n");
+		return;
+	}
+	if(start->next==NULL)
+	{
+	    printf("The deleted data is %d\t",start->info);
+	    free(start);
+	    start=NULL;
+	    return;
+	}
+	while(temp->next!=NULL)
+	{
+		prev=temp;
+		temp=temp->next;
+	}
+	prev->next=NULL;
+	printf("The deleted data is %d\t",temp->info);
+	free(temp);
+}
+
+void display()
+{
+	int cnt=0;
+	node *temp;
+	if(start==NULL)
+	{
+		printf("List is empty\n");
+		return;
+	}
+	temp=start;
+	printf("The details are\n");
+	while(temp!=NULL)
+	{
+		printf("%d\t",temp->info);
+		cnt++;
+		temp=temp->next;
+	}
+	printf("The total nodes are %d\n",cnt);
+}
+
+int main()
+{
+	int ch;
+	while(1)
+	{
+		printf("\n 1:insert_queueFront\n 2:delete_queueEnd\n 3:display\n");
+		printf("Enter the choice:");
+		scanf("%d",&ch);
+		switch(ch)
+		{
+			case 1:insert_queueFront();
+			       break;
+			case 2:delete_queueEnd();
+			       break;
+			case 3:display();
+			       break;
+		   default:exit(0);
+		}
+	}
+	return 0;
+}s
